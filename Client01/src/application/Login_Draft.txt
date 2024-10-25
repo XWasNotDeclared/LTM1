@@ -1,0 +1,44 @@
+package application;
+
+import javafx.application.*;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import javafx.scene.Scene;
+import javafx.stage.*;
+
+public class Login extends Application{
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+		
+		Label usernameLabel = new Label ("Tên đăng nhập:");
+		TextField usernameField = new TextField();
+		
+		Label passwordLabel = new Label("Mật khẩu:");
+		PasswordField passwordField = new PasswordField();
+		
+		Button loginButton = new Button("Đăng nhập");
+		loginButton.setOnAction(event -> {
+			System.out.println("Dang nhap handle");
+		});
+		
+		VBox vbox = new VBox(10);
+		vbox.getChildren().addAll(usernameLabel, usernameField, passwordLabel, passwordField, loginButton);
+		
+		Scene scene = new Scene(vbox, 800,500);
+		
+		primaryStage.setTitle("Tấm nhặt thóc");
+		primaryStage.setScene(scene);
+		primaryStage.show();
+
+		
+	}
+	
+	public void start(String args[]) {
+		launch(args);
+	}
+	
+
+
+}
+

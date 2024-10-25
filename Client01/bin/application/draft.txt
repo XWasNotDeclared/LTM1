@@ -1,0 +1,24 @@
+
+			User user = (User) message.getData();
+			System.out.println(user.toString());
+			Platform.runLater(() ->{
+				Home home = new Home();
+				try {
+					home.start(Util.getCurrentStage());
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			});
+			
+			
+			
+			
+			Platform.runLater(() ->{
+				Util.showError("Đăng nhập thất bại, sai tên hoặc mật khẩu!");
+			});
+			
+			
+			
+			
+			Util.showError("Lối bất định(LOGIN)");

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="402.0" prefWidth="600.0" stylesheets="@Login.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RegisterController">
+   <children>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ĐĂNG KÝ TÀI KHOẢN MỚI">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Label text="Tên đăng nhập:" />
+      <TextField fx:id="userNameText" />
+      <Label text="Mật khẩu:" />
+      <TextField fx:id="paswordText" />
+      <Button fx:id="registerButton" mnemonicParsing="false" onAction="#Register" text="Đăng ký" />
+      <Label text="Đã có tài khoản?" />
+      <Button mnemonicParsing="false" onAction="#NavToLogin" text="Đăng nhập" />
+   </children>
+</VBox>

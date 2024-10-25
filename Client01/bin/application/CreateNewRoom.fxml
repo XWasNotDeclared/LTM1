@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@CreateNewRoom.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CreateNewRoomController">
+   <children>
+      <Label text="Số người" />
+      <TextField fx:id="numPeopleText" editable="false" text="2" />
+      <Label text="Số hạt" />
+      <TextField fx:id="numSeedText" text="10" />
+      <Label text="Số loại hạt" />
+      <TextField fx:id="numTypeText" text="2" />
+      <Button fx:id="createNewRoom" mnemonicParsing="false" onAction="#creatRoomClick" text="Tạo phòng" />
+      <Button fx:id="goBackButton" mnemonicParsing="false" onAction="#goBackButtonCick" text="Quay lại" />
+   </children>
+</VBox>

@@ -1,0 +1,103 @@
+package application;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
+import model.Message;
+
+public class Communication {
+	private ObjectInputStream ois;
+	private ObjectOutputStream oos;
+	private Socket socket;
+	private volatile boolean running = true;
+
+	public Communication(String ip, int port) throws IOException, ClassNotFoundException {
+		this.socket = connectToServer(ip, port);
+		this.oos = new ObjectOutputStream(socket.getOutputStream());
+		sendMessage(new Message("PING", "a"));
+		this.ois = new ObjectInputStream(socket.getInputStream());
+		ois.readObject();
+		///////
+		new Thread(() -> {
+			try {
+				checkConnectionLoop();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}).start();
+
+	}
+
+	public void checkConnection() throws IOException, ClassNotFoundException {
+		if (socket.isClosed() || !socket.isConnected()) {
+			System.out.println("Socket không còn kết nối!");
+		} else {
+			long startTime = System.currentTimeMillis();
+			try {
+				sendMessage(new Message("PING", "a"));
+				Message respoMessage = receiveMessage();
+				if (respoMessage != null && respoMessage.getLabel().equals("PONG")) {
+					long endTime = System.currentTimeMillis();
+					System.out.println("Co ket noi");
+					System.out.println(endTime - startTime);
+				}
+
+			} catch (IOException e) {
+				System.out.println("Socket không còn kết nối!(K ping dc)");
+				close();
+			}
+		}
+	}
+
+	private void checkConnectionLoop() throws IOException, ClassNotFoundException {
+
+		while (running) {
+			checkConnection();
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				Thread.currentThread().interrupt();
+				break;
+			}
+		}
+	}
+
+
+	public synchronized void sendMessage(Message message) throws IOException {
+		oos.writeObject(message);
+		oos.flush();
+
+	}
+
+	public synchronized Message receiveMessage() throws IOException, ClassNotFoundException {
+		return (Message) ois.readObject();
+	}
+
+	public void close() throws IOException {
+		running = false;
+		ois.close();
+		oos.close();
+		socket.close();
+	}
+
+	public Socket connectToServer(String host, int port) {
+
+		try {
+			Socket socket = new Socket(host, port);
+			System.out.println("Ket noi thanh cong!!!");
+			return socket;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("k kn sv");
+
+		return null;
+	}
+
+}

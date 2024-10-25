@@ -1,0 +1,30 @@
+/* JavaFX CSS - Leave this comment until you /* Thay đổi kiểu cho các label */
+.label {
+    -fx-font-size: 16px;
+    -fx-text-fill: white; /* Màu chữ trắng */
+}
+
+/* Thay đổi kiểu cho các trường nhập */
+.text-field, .password-field {
+    -fx-background-color: white; /* Màu nền trắng */
+    -fx-text-fill: #333; /* Màu chữ tối */
+    -fx-padding: 10px; /* Khoảng đệm cho trường nhập */
+    -fx-font-size: 14px; /* Kích thước chữ */
+    -fx-border-radius: 20; /* Bo góc */
+    -fx-background-radius: 20; /* Bo góc */
+}
+
+/* Thay đổi kiểu cho nút */
+.button {
+    -fx-background-color: #fc5c7d; /* Màu nền của nút */
+    -fx-text-fill: white; /* Màu chữ trắng */
+    -fx-padding: 10px 20px; /* Khoảng đệm cho nút */
+    -fx-font-size: 16px; /* Kích thước chữ */
+    -fx-background-radius: 20; /* Bo góc */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0, 0, 1); /* Hiệu ứng đổ bóng */
+}
+
+/* Thay đổi kiểu cho nút khi di chuột */
+.button:hover {
+    -fx-background-color: #6a82fb; /* Màu nền khi di chuột */
+}
